@@ -1,0 +1,60 @@
+<div class='panel panel-success text-center'>
+  <div class="panel-heading">
+    <h3>Angular OMDB API Search</h3>
+    <div class='form-inline'>
+      <div class="form-group">
+        <label for="title">Enter a movie by title:</label>
+        <input type="text" id='title' class='form-control' ng-model='vm.search' autofocus>
+      </div>
+      <div class="form-group">
+        <a href="/{{vm.search}}">
+          <button id='searchButton' class='btn btn-success'>SEARCH <i class='fa fa-arrow-circle-right'></i></button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-3">
+          <img src="{{vm.data.Poster}}" alt="movie" class='img-responsive'>
+        </div>
+        <div class="col-md-9">
+          <div class="title">
+            <h3>{{vm.data.Title}}<small> ({{vm.data.Year}})</small></h3>
+            <h6>{{vm.data.Rated}} | {{vm.data.Runtime}} | {{vm.data.Genre}} | {{vm.data.Released}} {{vm.data.Country}}</h6>        
+          </div>
+          <hr>
+          <div class="ratings">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="progress">
+                  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{vm.data.imdbRating}}" aria-valuemin="0" aria-valuemax="10" style="width: {{vm.data.imdbRating*10}}%;">
+                    {{vm.data.imdbRating}}
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <p>
+                  <strong>Ratings:</strong> {{vm.data.imdbRating}}/10 from {{vm.data.imdbVotes}} users
+                  <strong>Metascore:</strong> {{vm.data.Metascore}}/100
+                </p>                
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="description">
+            <p>{{vm.data.Plot}}</p>
+            <p><strong>Director: </strong>{{vm.data.Director}}</p>
+            <p><strong>Writer: </strong>{{vm.data.Writer}}</p>
+            <p><strong>Actors: </strong>{{vm.data.Actors}}</p>
+            <p><strong>Awards: </strong>{{vm.data.Awards}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class='panel panel-success text-center'>
+  <div class="panel-heading">
+    <h3>Angular OMDB API Search</h3>
+    <form name='movieForm' class='form-inline' ng-submit='vm.searchMovie()'>
+      <div class="form-group">
+        <label for="title">Enter a movie by title:</label>
+        <input type="text" id='title' class='form-control' value='vm.search' ng-model='vm.search' autofocus>
+      </div>
+      <div class="form-group">
+        <button type="submit" id='searchButton' class='btn btn-success'>SEARCH <i class='fa fa-arrow-circle-right'></i></button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="container">
+  <div class="columns" ng-show='vm.results'>
+    <a href='/{{movie.imdbID}}/show' class="movies" ng-repeat='movie in vm.results'>
+      <img src="{{movie.Poster}}" alt="movie" class='img-responsive'>
+      <h4>{{movie.Title}} <small>{{movie.Year}}</small></h4>
+    </a>
+  </div>
+
+  <div class='noResults' ng-if='vm.results === undefined'>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Oh Snap!</strong> Looks like the movie '{{vm.search}}' is not found. Try Again.
+    </div>
+  </div>
+</div>
